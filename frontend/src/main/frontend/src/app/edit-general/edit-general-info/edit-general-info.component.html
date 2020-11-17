@@ -1,0 +1,21 @@
+<div style="background-image: url(assets/aerobics-wallpaper-1920x1080.jpg)" class="image-container">
+  <div>
+    <button mat-button
+            #matBtn
+            (mouseover)="matBtn._elementRef.nativeElement.click()"
+            [matMenuTriggerFor]="menu">Protein</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="WheyProtein"><b>Whey Protein</b></button>
+      <button mat-menu-item>Isolate Protein</button>
+    </mat-menu>
+
+    <mat-menu #WheyProtein="matMenu">
+      <button mat-menu-item (click)="getProtein()" [routerLink]="['/protein']">Muscletech NITRO TECH</button>
+      <button mat-menu-item>Optimum Nutrition 100% Whey Gold Standard</button>
+    </mat-menu>
+  </div>
+</div>
+
+
+
+

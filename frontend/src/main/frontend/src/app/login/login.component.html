@@ -1,0 +1,18 @@
+<p>You can enter to the site under your
+  <b>login</b> or if you nave not account you can <a routerLink="/register">register</a>.</p>
+
+<div class="example-container col-8  col-sm-2">
+  <div class="form-group">
+    <input type="text" class="form-control" ngModel [(ngModel)]="loginValue" [placeholder]="login">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" ngModel [(ngModel)]="passwordValue" [placeholder]="password">
+  </div>
+  <button mat-raised-button color="primary" (click)="onEnter()">Enter</button>
+</div>
+<div *ngIf="isLoginError" class="form-group">
+  <p class="font-weight-bold type-error">Error with login or password</p>
+</div>
+<div *ngIf="isUserLogin" class="form-group">
+  <p class="font-weight-bold type-accept">Login Success</p>
+</div>

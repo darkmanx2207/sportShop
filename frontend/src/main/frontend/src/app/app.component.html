@@ -1,0 +1,41 @@
+<!--<h1>
+  {{title}}
+</h1>
+
+<p>its working!!</p>
+
+
+<button (click)="getUser()">get User</button>
+
+<button (click)="loadUsers()">CLICK!</button>
+
+<p>{{ user | json }}</p>
+<app-edit-general-info></app-edit-general-info>
+<div class="container">
+    <nav style="margin-bottom: 20px;" class="navbar mat-">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li routerLinkActive="active"><a routerLink="/">Main</a></li>
+          <li routerLinkActive="active"><a routerLink="/login">Login</a></li>
+        </ul>
+      </div>
+    </nav>
+</div>
+<div class="row">
+  <div class="col-sm-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>-->
+
+<mat-toolbar color="primary">
+      <div routerLinkActive="active" ><a routerLink="/" class="color-default">Main</a></div>
+      <div routerLinkActive="active" class="example-spacer"><a routerLink="/login"
+                                                               class="color-default">Login</a></div>
+</mat-toolbar>
+
+<div class="row">
+  <div class="col-sm-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+

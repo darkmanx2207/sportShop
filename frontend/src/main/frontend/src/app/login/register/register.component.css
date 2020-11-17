@@ -1,0 +1,16 @@
+.center {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  top: 50px;
+}
+
+.button-right {
+  left: 110px;
+}
+
+.register-form {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}

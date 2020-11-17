@@ -1,0 +1,11 @@
+.type-error {
+  color: red;
+  background-color: #fbe1e3;
+  padding: 10px 5px;
+}
+
+.type-accept {
+  color: #009926;
+  background-color: aquamarine;
+  padding: 10px 5px;
+}

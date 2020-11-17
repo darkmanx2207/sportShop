@@ -1,0 +1,15 @@
+<div class="center">
+  <div class="example-container col-8  col-sm-4">
+    <h2 class="register-form">Register form</h2>
+    <div class="form-group">
+      <input type="text" class="form-control" ngModel [(ngModel)]="loginValue" [placeholder]="login">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" ngModel [(ngModel)]="emailValue" [placeholder]="email">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" ngModel [(ngModel)]="passwordValue" [placeholder]="password">
+    </div>
+    <button class="button-right" mat-raised-button color="primary" (click)="registration()">Registration</button>
+  </div>
+</div>
