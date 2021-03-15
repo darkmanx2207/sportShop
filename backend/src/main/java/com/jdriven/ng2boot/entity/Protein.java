@@ -1,6 +1,8 @@
 package com.jdriven.ng2boot.entity;
 
 import javax.persistence.*;
+import java.sql.Blob;
+import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
@@ -24,7 +26,22 @@ public class Protein {
     @Column(name = "price")
     private String price;
 
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
+    @Column(name = "type")
+    private String type;
+
     public Protein () {}
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
     public Long getId() {
         return id;
@@ -66,6 +83,14 @@ public class Protein {
         this.price = price;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -75,12 +100,16 @@ public class Protein {
                 Objects.equals(getName(), protein.getName()) &&
                 Objects.equals(getTaste(), protein.getTaste()) &&
                 Objects.equals(getDescription(), protein.getDescription()) &&
-                Objects.equals(getPrice(), protein.getPrice());
+                Objects.equals(getPrice(), protein.getPrice()) &&
+                Arrays.equals(getImage(), protein.getImage()) &&
+                Objects.equals(getType(), protein.getType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getTaste(), getDescription(), getPrice());
+        int result = Objects.hash(getId(), getName(), getTaste(), getDescription(), getPrice(), getType());
+        result = 31 * result + Arrays.hashCode(getImage());
+        return result;
     }
 
     @Override
@@ -91,6 +120,8 @@ public class Protein {
                 ", taste='" + taste + '\'' +
                 ", description='" + description + '\'' +
                 ", price='" + price + '\'' +
+                ", image=" + Arrays.toString(image) +
+                ", type='" + type + '\'' +
                 '}';
     }
 }

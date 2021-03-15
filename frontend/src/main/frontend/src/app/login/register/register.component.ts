@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../../service/User.service';
 import {User} from '../../model/User';
 import {Observable} from 'rxjs/Observable';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -10,25 +11,29 @@ import {Observable} from 'rxjs/Observable';
 })
 export class RegisterComponent implements OnInit {
 
+  @ViewChild('form', null) form: NgForm;
   login = 'Login';
   email = 'E-mail';
-  loginValue = '';
-  emailValue = '';
   password = 'Password';
-  passwordValue = '';
   user: User = new User();
+  hero: {};
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
   }
 
   registration() {
-    this.user.login = this.loginValue;
-    this.user.password = this.passwordValue;
-    this.user.email = this.emailValue;
-
+    this.user = this.form.value;
     this.userService.createUser(this.user).subscribe();
-    console.log(this.loginValue, this.emailValue, this.passwordValue);
+    this.form.reset();
+    console.log(this.user);
+  }
+
+  submited() {
+    this.hero = this.form.value;
+    console.log('submit', this.form);
+    console.log(this.hero);
   }
 }

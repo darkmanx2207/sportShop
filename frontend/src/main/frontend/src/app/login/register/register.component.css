@@ -14,3 +14,15 @@
   justify-content: center;
   position: relative;
 }
+
+.error-message {
+  top: 50px;
+}
+
+.top-btn {
+  top: 100px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

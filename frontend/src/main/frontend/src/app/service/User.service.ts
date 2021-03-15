@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {User} from '../model/User';
 import {catchError} from 'rxjs/operators';
@@ -13,12 +13,10 @@ export class UserService {
 
   getUser(id: number) {
     return this.http.get(`http://localhost:8080/user/${id}`);
-    // .pipe(map((response: Response) => response.json()));
   }
 
   getUsers() {
     return this.http.get(`http://localhost:8080/user`);
-    // .pipe(map((response: Response) => response.json()));
   }
 
   getLoginAccess(login: string, password: string): Observable<boolean> {
@@ -27,6 +25,6 @@ export class UserService {
 
   createUser(user: User): Observable<any> {
     return this.http.post<any>(`http://localhost:8080/user/createUser`, user);
-   }
+  }
 
 }

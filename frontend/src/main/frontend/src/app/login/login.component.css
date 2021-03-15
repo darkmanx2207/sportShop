@@ -9,3 +9,7 @@
   background-color: aquamarine;
   padding: 10px 5px;
 }
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}

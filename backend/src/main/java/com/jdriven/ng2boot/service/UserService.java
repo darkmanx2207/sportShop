@@ -1,6 +1,8 @@
 package com.jdriven.ng2boot.service;
 
 import com.jdriven.ng2boot.dao.UserDao;
+import com.jdriven.ng2boot.entity.Protein;
+import com.jdriven.ng2boot.entity.ProteinType;
 import com.jdriven.ng2boot.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -35,5 +37,4 @@ public class UserService {
     public User getUser(String login, String password) {
         return userDao.getUser(login, password);
     }
-
 }

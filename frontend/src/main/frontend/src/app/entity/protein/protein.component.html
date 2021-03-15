@@ -1,1 +1,13 @@
-<p>protein works!</p>
+<!--<app-edit-general-info (newItemEvent)="getProtein($event)"></app-edit-general-info>-->
+<div style="background-image: url(assets/prot.jpg)" class="image-container">
+  <div class="card card-color" style="width:400px" *ngIf="protein && imageSTR">
+    <img class="card-img-top" [src]="imageSTR" alt="Card image">
+    <div class="card-body" id="htmlData" #htmlData>
+      <h4 class="card-title">{{ protein.name }}</h4>
+      <p class="card-text">Price: {{ protein.price }} euro</p>
+      <p class="card-text">{{ protein.description }}</p>
+      <p class="card-text">Taste: {{ protein.taste }}</p>
+      <button (click)="openPDF()">openPDF</button>
+    </div>
+  </div>
+</div>

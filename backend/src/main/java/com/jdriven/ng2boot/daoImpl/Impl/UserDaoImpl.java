@@ -2,7 +2,9 @@ package com.jdriven.ng2boot.daoImpl.Impl;
 
 import com.jdriven.ng2boot.dao.UserDao;
 import com.jdriven.ng2boot.entity.User;
+import org.hibernate.CacheMode;
 import org.hibernate.Criteria;
+import org.hibernate.FlushMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,8 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Long createUser(User user) {
         sessionFactory.getCurrentSession().save(user);
+        sessionFactory.getCurrentSession().setFlushMode(FlushMode.NEVER);
+
         return user.getId();
     }
 
@@ -52,7 +56,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUser(String login, String password) {
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class).setFlushMode(FlushMode.NEVER);
         criteria.add(Restrictions.eq("login", login));
         criteria.add(Restrictions.eq("password", password));
 

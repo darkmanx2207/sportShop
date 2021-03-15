@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../service/User.service';
+import {User} from '../model/User';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +10,13 @@ import {UserService} from '../service/User.service';
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('form', null) form: NgForm;
   hide = true;
-  isOpenForm = false;
   login = 'Login';
   password = 'Password';
-  loginValue = '';
-  passwordValue = '';
   isUserLogin = false;
   isLoginError = false;
+  user: User;
 
   constructor(private userService: UserService) {
   }
@@ -24,21 +25,21 @@ export class LoginComponent implements OnInit {
   }
 
   onEnter() {
-    if ((this.loginValue && this.passwordValue) !== '') {
-      this.userService.getLoginAccess(this.loginValue, this.passwordValue).subscribe(isUserLogin => {
-        this.isUserLogin = isUserLogin;
+    this.user = this.form.value;
+    this.userService.getLoginAccess(this.user.login, this.user.password).subscribe(isUserLogin => {
+      this.isUserLogin = isUserLogin;
 
-        if (!isUserLogin) {
-          this.isLoginError = true;
-        } else {
-          this.isLoginError = false;
-        }
+      if (!isUserLogin) {
+        this.isLoginError = true;
+      } else {
+        this.isLoginError = false;
+      }
 
-        console.log(this.loginValue);
-        console.log(this.passwordValue);
-        console.log(this.isUserLogin);
-      });
-    }
+      this.form.reset();
+
+      console.log(this.user.login);
+      console.log(this.user.password);
+      console.log(this.isUserLogin);
+    });
   }
-
 }

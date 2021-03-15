@@ -1,0 +1,29 @@
+.image-container {
+  width: 1920px;
+  height: 1080px;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-card {
+  padding: 2%;
+  flex-grow: 1;
+  flex-basis: 16%;
+
+  display: flex; /* so child elements can use flexbox stuff too! */
+}
+
+.product-image img {
+  max-width: 70%;
+}
+
+.product-info {
+  margin-top: auto;
+}
+
+.card-color{
+  background-color: #c4f3ff;
+}

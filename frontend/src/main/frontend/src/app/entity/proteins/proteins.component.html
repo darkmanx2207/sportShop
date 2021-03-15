@@ -1,0 +1,15 @@
+<h2>{{ sharedData.type }} protein</h2>
+<div class="col-sm-6">
+  <div class="card-deck">
+    <div class="card border-primary mb-3" style="width: 18rem;" *ngFor="let protein of proteins">
+      <img *ngIf="protein.photo" [src]="protein.photo" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ protein.name }}</h5>
+        <p class="card-text">Protein taste is {{ protein.taste }}</p>
+        <p class="card-text">{{ protein.description }}</p>
+        <p class="text-danger">Protein price: {{ protein.price }}</p>
+        <button (click)="openPDF(protein.id)">PDF</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,15 +1,38 @@
 <div class="center">
   <div class="example-container col-8  col-sm-4">
-    <h2 class="register-form">Register form</h2>
-    <div class="form-group">
-      <input type="text" class="form-control" ngModel [(ngModel)]="loginValue" [placeholder]="login">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" ngModel [(ngModel)]="emailValue" [placeholder]="email">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" ngModel [(ngModel)]="passwordValue" [placeholder]="password">
-    </div>
-    <button class="button-right" mat-raised-button color="primary" (click)="registration()">Registration</button>
+    <form (ngSubmit)="submited()" #form="ngForm">
+      <h2 class="register-form">Register form</h2>
+      <div class="form-group">
+        <input type="text" class="form-control" ngModel [placeholder]="login" required
+               minlength="3"
+               #loginValueModel="ngModel"
+               name="login">
+      </div>
+      <p [ngClass]="{'alert alert-danger': loginValueModel.invalid && loginValueModel.touched}"
+         *ngIf="loginValueModel.invalid && loginValueModel.touched">Please enter the login at least 3 characters</p>
+      <div class="form-group">
+        <input type="text" class="form-control" ngModel [placeholder]="password" required
+               minlength="3"
+               #passwordValueModel="ngModel"
+               name="password">
+      </div>
+      <p [ngClass]="{'alert alert-danger': passwordValueModel.invalid && passwordValueModel.touched}"
+         *ngIf="passwordValueModel.invalid && passwordValueModel.touched">Please enter the password at least 3
+        characters</p>
+      <div class="form-group">
+        <input type="text" class="form-control" ngModel [placeholder]="email" required
+               minlength="3"
+               #emailValueModel="ngModel"
+               name="email"
+               email>
+      </div>
+      <p [ngClass]="{'alert alert-danger': emailValueModel.invalid && emailValueModel.touched}"
+         *ngIf="emailValueModel.invalid && emailValueModel.touched">Please enter the Email at least 3 characters</p>
+    </form>
+    <button class="button-right" mat-raised-button color="primary"
+            (click)="registration()"
+            [disabled]="!form.valid"
+    >Registration
+    </button>
   </div>
 </div>

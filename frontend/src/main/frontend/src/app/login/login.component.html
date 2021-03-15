@@ -2,17 +2,27 @@
   <b>login</b> or if you nave not account you can <a routerLink="/register">register</a>.</p>
 
 <div class="example-container col-8  col-sm-2">
-  <div class="form-group">
-    <input type="text" class="form-control" ngModel [(ngModel)]="loginValue" [placeholder]="login">
-  </div>
-  <div class="form-group">
-    <input type="text" class="form-control" ngModel [(ngModel)]="passwordValue" [placeholder]="password">
-  </div>
-  <button mat-raised-button color="primary" (click)="onEnter()">Enter</button>
+  <form #form="ngForm">
+    <div class="form-group">
+      <input type="text" class="form-control" ngModel [placeholder]="login" name="login"
+             required #loginRef="ngModel" minlength="3">
+    </div>
+    <p *ngIf="loginRef.invalid && loginRef.touched"
+       [ngClass]="{'alert alert-danger': loginRef.invalid && loginRef.touched}"
+    >Login must contain at least 3 characters.</p>
+    <div class="form-group">
+      <input type="text" class="form-control" ngModel [placeholder]="password" name="password" required
+             #passwordRef="ngModel" minlength="3">
+    </div>
+    <p *ngIf="passwordRef.invalid && passwordRef.touched"
+       [ngClass]="{'alert alert-danger': passwordRef.invalid && passwordRef.touched}"
+    >Password must contain at least 3 characters.</p>
+    <button mat-raised-button color="primary" (click)="onEnter()" [disabled]="form.invalid">Enter</button>
+  </form>
 </div>
 <div *ngIf="isLoginError" class="form-group">
-  <p class="font-weight-bold type-error">Error with login or password</p>
+  <p class="alert alert-danger">Such user does not exist.</p>
 </div>
 <div *ngIf="isUserLogin" class="form-group">
-  <p class="font-weight-bold type-accept">Login Success</p>
+  <p class="alert alert-success">Login Success.</p>
 </div>
